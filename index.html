@@ -1,4 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RPS Game!</title>
+</head>
+<body>
+
 <script>
-	
-	
+//A game of Rock Paper Scissors against the CPU
+	let roundCount = 1;
+	let playerScore = 0;
+	let computerScore = 0;
+//As of now I'm not using any loops and arrays
+	game();	
+	game();
+	game();
+	game();
+	game();
+
+	function game() { // Main function
+	let comPlay = computerPlay();
+	let humPlay = prompt("Input your choice:");
+	humPlay = humPlay.toLowerCase(); // Will add more inputs checks later. For now Im just assuming it's always a string with a valid input
+	playRound(humPlay, comPlay);
+	}
+
+
+	function computerPlay() {
+
+		let play = Math.floor(Math.random() * 3) + 1;	//Getting the random number betwween 1 and 3
+		
+		if(play == 1) { //Assigning the 'play' variable a meaningful value
+			play="rock";
+		}
+		else if(play == 2) {
+			play="scissors";
+		}
+		else {
+			play = "paper";
+		}
+		return play;
+	}
+
+	function winChecker(roundResult) { //function that tracks the score and rounds
+
+		let statusMessage = `Player - ${playerScore}, Computer - ${computerScore}, Round ${roundCount}`;
+
+		if(roundResult == "playerWin") {
+			playerScore++;
+		}
+		else if(roundResult == "computerWin") {
+			computerScore++;
+		}
+				
+		if(roundCount < 5) { //While the round limit is not reached, display a score and round number.
+			console.log(statusMessage);
+			roundCount++;
+		}
+		else { //If it was a final round, display the winner.
+		 	if(computerScore>playerScore) {
+				console.log(statusMessage + " COMPUTER WINS");
+			}
+			else if(computerScore<playerScore) {
+				console.log(statusMessage + " Player Wins");
+			}
+			else {
+				console.log(statusMessage + " Draw!");
+			}
+		}
+	}
+
+	function playRound (playerSelection, computerSelection)	{
+
+		switch(playerSelection) { // 
+			case "rock":
+				if(computerSelection=="rock")	{
+					winChecker("draw");
+					break;
+				}
+				else if(computerSelection=="scissors") {
+					winChecker("playerWin");
+					break;
+				}
+				else {
+					winChecker("computerWin");
+					break;
+				}
+			case "scissors":
+				if(computerSelection=="rock")	{
+					winChecker("computerWin");
+					break;
+				}
+				else if(computerSelection=="scissors") {
+					winChecker("draw");
+					break;
+				}
+				else {
+					winChecker("playerWin");
+					break;
+				}
+			case "paper":
+				if(computerSelection=="rock")	{
+					winChecker("playerWin");
+					break;
+				}
+				else if(computerSelection=="scissors") {
+					winChecker("computerWin");
+					break;
+				}
+				else {
+					winChecker("draw");
+					break;
+				}
+			}			
+	}
+
 </script>
+
+
+</body>
+</html>
