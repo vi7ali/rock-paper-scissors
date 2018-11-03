@@ -6,30 +6,29 @@
 <body>
 
 <script>
-//A game of Rock Paper Scissors against the CPU
 	let roundCount = 1;
 	let playerScore = 0;
 	let computerScore = 0;
-//As of now I'm not using any loops and arrays
+
 	game();	
 	game();
 	game();
 	game();
 	game();
 
-	function game() { // Main function
+	function game() {  
 	let comChoice = chooseComputer();
-	let humChoice = prompt("Input your choice:");
-	humChoice = humChoice.toLowerCase(); // Will add more inputs checks later. For now Im just assuming it's always a string with a valid input
+	let humChoice = prompt("Input your choice:"); // TODO input validation
+	humChoice = humChoice.toLowerCase();
 	playRound(humChoice, comChoice);
 	}
 
 
 	function chooseComputer() {
 
-		let play = Math.floor(Math.random() * 3) + 1;	//Getting the random number betwween 1 and 3
+		let play = Math.floor(Math.random() * 3) + 1;	//random number between 1 and 3
 		
-		if(play == 1) { //Assigning the 'play' variable a meaningful value
+		if(play == 1) { 
 			play="rock";
 		}
 		else if(play == 2) {
@@ -52,11 +51,11 @@
 			computerScore++;
 		}
 
-		if(roundCount < 5) { //While the round limit is not reached, display a score and round number.
+		if(roundCount < 5) { 
 			console.log(statusMessage);
 			roundCount++;
 		}
-		else { //If it was a final round, display the winner.
+		else { //Final round
 		 	if(computerScore>playerScore) {
 				console.log(statusMessage + " COMPUTER WINS");
 			}
