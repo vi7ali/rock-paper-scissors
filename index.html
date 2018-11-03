@@ -4,7 +4,6 @@
 	<title>RPS Game!</title>
 </head>
 <body>
-
 <script>
 	let roundCount = 1;
 	let playerScore = 0;
@@ -23,16 +22,15 @@
 	playRound(humChoice, comChoice);
 	}
 
-
 	function chooseComputer() {
 
 		let play = Math.floor(Math.random() * 3) + 1;	//random number between 1 and 3
 		
 		if(play == 1) { 
-			play="rock";
+			play = "rock";
 		}
 		else if(play == 2) {
-			play="scissors";
+			play = "scissors";
 		}
 		else {
 			play = "paper";
@@ -40,9 +38,10 @@
 		return play;
 	}
 
-	function checkWin(roundResult) { //function that tracks the score and rounds
+	function checkWin(roundResult) { //Score, Round and Win check
 
-		let statusMessage = `Player - ${playerScore}, Computer - ${computerScore}, Round ${roundCount}`;
+		let statusMessage = `Player - ${playerScore}, Computer - 
+				${computerScore}, Round ${roundCount}`;
 
 		if(roundResult == "playerWin") {
 			playerScore++;
@@ -70,7 +69,7 @@
 
 	function playRound (playerSelection, computerSelection)	{
 
-		switch(playerSelection) { // 
+		switch(playerSelection) {
 			case "rock":
 				if(computerSelection=="rock")	{
 					checkWin("draw");
@@ -114,7 +113,5 @@
 	}
 
 </script>
-
-
 </body>
 </html>
