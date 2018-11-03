@@ -18,14 +18,14 @@
 	game();
 
 	function game() { // Main function
-	let comPlay = computerPlay();
-	let humPlay = prompt("Input your choice:");
-	humPlay = humPlay.toLowerCase(); // Will add more inputs checks later. For now Im just assuming it's always a string with a valid input
-	playRound(humPlay, comPlay);
+	let comChoice = chooseComputer();
+	let humChoice = prompt("Input your choice:");
+	humChoice = humChoice.toLowerCase(); // Will add more inputs checks later. For now Im just assuming it's always a string with a valid input
+	playRound(humChoice, comChoice);
 	}
 
 
-	function computerPlay() {
+	function chooseComputer() {
 
 		let play = Math.floor(Math.random() * 3) + 1;	//Getting the random number betwween 1 and 3
 		
@@ -41,7 +41,7 @@
 		return play;
 	}
 
-	function winChecker(roundResult) { //function that tracks the score and rounds
+	function checkWin(roundResult) { //function that tracks the score and rounds
 
 		let statusMessage = `Player - ${playerScore}, Computer - ${computerScore}, Round ${roundCount}`;
 
@@ -51,7 +51,7 @@
 		else if(roundResult == "computerWin") {
 			computerScore++;
 		}
-				
+
 		if(roundCount < 5) { //While the round limit is not reached, display a score and round number.
 			console.log(statusMessage);
 			roundCount++;
@@ -74,41 +74,41 @@
 		switch(playerSelection) { // 
 			case "rock":
 				if(computerSelection=="rock")	{
-					winChecker("draw");
+					checkWin("draw");
 					break;
 				}
 				else if(computerSelection=="scissors") {
-					winChecker("playerWin");
+					checkWin("playerWin");
 					break;
 				}
 				else {
-					winChecker("computerWin");
+					checkWin("computerWin");
 					break;
 				}
 			case "scissors":
 				if(computerSelection=="rock")	{
-					winChecker("computerWin");
+					checkWin("computerWin");
 					break;
 				}
 				else if(computerSelection=="scissors") {
-					winChecker("draw");
+					checkWin("draw");
 					break;
 				}
 				else {
-					winChecker("playerWin");
+					checkWin("playerWin");
 					break;
 				}
 			case "paper":
 				if(computerSelection=="rock")	{
-					winChecker("playerWin");
+					checkWin("playerWin");
 					break;
 				}
 				else if(computerSelection=="scissors") {
-					winChecker("computerWin");
+					checkWin("computerWin");
 					break;
 				}
 				else {
-					winChecker("draw");
+					checkWin("draw");
 					break;
 				}
 			}			
