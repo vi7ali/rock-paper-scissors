@@ -1,4 +1,3 @@
-	let roundCount = 1;
 	let playerScore = 0;
 	let computerScore = 0;	
 
@@ -26,27 +25,22 @@
 
 	function checkWin(roundResult) { //Score, Round and Win check
 
-		let statusMessage = `Player - ${playerScore}, Computer - 
-				${computerScore}, Round ${roundCount}`;
-
 		if(roundResult == "playerWin") playerScore++;		
 		else if(roundResult == "computerWin") computerScore++;
+
+		let statusMessage = `Player - ${playerScore}, Computer - 
+				${computerScore}`;
 		
-		if(roundCount < 5) { 
-			resultDiv.textContent = statusMessage;
-			roundCount++;
+		if(computerScore != 5 && playerScore != 5) { 
+			resultDiv.textContent = statusMessage;			
 		}
 		else { //Final round
 		 	if(computerScore>playerScore) {
 				resultDiv.textContent = statusMessage + " COMPUTER WINS";
 			}
-			else if(computerScore<playerScore) {
+			else {
 				resultDiv.textContent = statusMessage + " Player Wins";
 			}
-			else {
-				resultDiv.textContent = statusMessage + " Draw!";
-			}
-			roundCount = 1;
 			playerScore = 0;
 			computerScore = 0;
 		}
